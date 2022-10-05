@@ -1,6 +1,8 @@
 * Totality: The State Of Being Total
 A collection of my personal notes, a braindump. Inspired by [[https://braindump.jethro.dev/][Jethro Kuan]] and [[https://en.wikipedia.org/wiki/Zettelkasten][Zettelkasten]].
 
+Notes created with [[https://github.com/protesilaos/denote][denote]]. Built with Emacs and Org-mode.
+
 Build html with:
 #+begin_src sh :noeval
 ./scripts/batch.sh
