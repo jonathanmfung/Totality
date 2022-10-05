@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-04 Tue 18:08 -->
+<!-- 2022-10-04 Tue 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fixed Effects Model</title>
+<title>Building Emacs</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -195,24 +195,60 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Fixed Effects Model</h1>
-<p>
-A case of a Statistical Model where all parameters are fixed/non-random.
-</p>
+<h1 class="title">Building Emacs</h1>
+<div class="org-src-container">
+<pre class="src src-sh">cd ~/emacs_build/emacs
+git remote -v # ensure remote repo is correct
+git pull # sync commits
+git status
+./autogen.sh
+./configure -C --with-pgtk --with-native-compilation --with-json
+make -j8 # number of threads
+sudo make install
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(prin1 system-configuration-options)
+(print emacs-version)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(if (and (fboundp 'native-comp-available-p)
+       (native-comp-available-p))
+  (prin1 "Native compilation is available")
+(prin1 "Native complation is *not* available"))
+
+(if (functionp 'json-serialize)
+  (print "Native JSON is available")
+(print "Native JSON is *not* available"))
+</pre>
+</div>
 
 
-<div id="outline-container-org9e559b1" class="outline-2">
-<h2 id="org9e559b1"><span class="section-number-2">1.</span> Backlinks</h2>
+<div id="outline-container-orgd025856" class="outline-2">
+<h2 id="orgd025856"><span class="section-number-2">1.</span> Resources</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="20221004T171930--mixed-effects-model__statistics.html">Mixed Effects Model</a></li>
+<li>LINK</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org5aab64c" class="outline-2">
-<h2 id="org5aab64c"><span class="section-number-2">2.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org9e3b40a" class="outline-2">
+<h2 id="org9e3b40a"><span class="section-number-2">2.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>No backlinks to the current note</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org8c21bcd" class="outline-2">
+<h2 id="org8c21bcd"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

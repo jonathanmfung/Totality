@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-04 Tue 18:08 -->
+<!-- 2022-10-04 Tue 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Causal Inference</title>
+<title>Use Cases for Synthetic Data</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -195,34 +195,64 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Causal Inference</h1>
-<p>
-TEXT
-</p>
+<h1 class="title">Use Cases for Synthetic Data</h1>
+<ul class="org-ul">
+<li>Boosting signals of rare/corner cases</li>
+<li>Can focus on specific behaviors
+<ul class="org-ul">
+<li>Test for associated breakage</li>
+<li>Understand small but important interactions</li>
+</ul></li>
+<li>When working with personal information
+<ul class="org-ul">
+<li>Also when data has security liabilities and is locked down</li>
+</ul></li>
+<li>Need to show that process works before using real data
+<ul class="org-ul">
+<li>Both with sensitive data, and with large projects that are being built</li>
+</ul></li>
+<li>Model any "what if" scenarios</li>
+</ul>
 
-
-<div id="outline-container-org15e9ac1" class="outline-2">
-<h2 id="org15e9ac1"><span class="section-number-2">1.</span> Resources</h2>
+<div id="outline-container-orgb52cfb5" class="outline-2">
+<h2 id="orgb52cfb5"><span class="section-number-2">1.</span> Importance of Simulating Data</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>LINK</li>
+<li>In general, simulate from a model, then refit to see any differences</li>
+<li>Determine if a model can recover effects reliably/unbiasedly
+<ul class="org-ul">
+<li>Simulate with known parameters, then fit model to see estimation quality</li>
+</ul></li>
+<li>Check power of model for various scenarios</li>
+<li>Can check predictive performance of a model</li>
+<li>Can check Data-Generation Processes that do not satisfy all assumptions of a model</li>
 </ul>
 </div>
 </div>
 
-
-<div id="outline-container-orga2601c0" class="outline-2">
-<h2 id="orga2601c0"><span class="section-number-2">2.</span> Backlinks</h2>
+<div id="outline-container-orge4a5f88" class="outline-2">
+<h2 id="orge4a5f88"><span class="section-number-2">2.</span> Resource</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li><a href="20221004T171554--collider-bias__statistics.html">Collider Bias</a></li>
+<li><a href="https://www.reddit.com/r/datasets/comments/uozyib/if_you_use_synthetic_data_why_did_you_choose_to/">Why use Synthetic Data over Production Data?</a></li>
+<li><a href="https://www.reddit.com/r/statistics/comments/uvgesv/d_why_is_it_important_to_simulate_data/">Why is it Important to Simulate Data?</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orga807aa4" class="outline-2">
-<h2 id="orga807aa4"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-orgccc0c4c" class="outline-2">
+<h2 id="orgccc0c4c"><span class="section-number-2">3.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>No backlinks to the current note</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org76fe8a1" class="outline-2">
+<h2 id="org76fe8a1"><span class="section-number-2">4.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

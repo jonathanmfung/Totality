@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-04 Tue 18:08 -->
+<!-- 2022-10-04 Tue 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mixed Effects Model</title>
+<title>Fixed Effects Model</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -192,83 +192,27 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Mixed Effects Model</h1>
+<h1 class="title">Fixed Effects Model</h1>
 <p>
-A case of a Statistical Model that contains both <a href="20221004T172001--fixed-effects-model__draft_statistics.html">Fixed Effects Model</a> and <a href="20221004T172239--random-effects-model__draft_statistics.html">Random Effects Model</a>.
+A case of a Statistical Model where all parameters are fixed/non-random.
 </p>
 
-<p>
-Useful for repeated measurements and when observations are clustered.
-</p>
 
-<p>
-Case of Repeated: Repeated measures on same subjects, but number of measurements is not the same across the subjects. Then the measurements are clustered inside subjects.
-</p>
-
-<p>
-Case of clustered: Looking at a school, with students in same classes/teacher. Each class would have a random slope.
-</p>
-
-<div id="outline-container-org7356df9" class="outline-2">
-<h2 id="org7356df9"><span class="section-number-2">1.</span> Math</h2>
+<div id="outline-container-org5a605ca" class="outline-2">
+<h2 id="org5a605ca"><span class="section-number-2">1.</span> Backlinks</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-\(\vec{y} = X \vec{\beta} + Z \vec{u} + \vec{\epsilon}\)
-</p>
-
 <ul class="org-ul">
-<li>\(\vec{\beta}\) is fixed</li>
-<li>\(\vec{u}, \vec{\epsilon}\) are random</li>
-<li>\(X, Z\) are design matrices</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orga9dd3bf" class="outline-2">
-<h2 id="orga9dd3bf"><span class="section-number-2">2.</span> Resources</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="https://www.reddit.com/r/AskStatistics/comments/upf2sm/q_when_do_we_use_mixed_effects_models/">When do pwe use mixed effects models?</a></li>
+<li><a href="20221004T171930--mixed-effects-model__statistics.html">Mixed Effects Model</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgde35390" class="outline-2">
-<h2 id="orgde35390"><span class="section-number-2">3.</span> Backlinks</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li>No backlinks to the current note</li>
-</ul>
-</div>
-</div>
-
-
-<div id="outline-container-org64837c8" class="outline-2">
-<h2 id="org64837c8"><span class="section-number-2">4.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org718af7f" class="outline-2">
+<h2 id="org718af7f"><span class="section-number-2">2.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

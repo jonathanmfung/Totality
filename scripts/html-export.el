@@ -106,11 +106,11 @@ Modified for use in html export, to remove hardcoded 'target=\"_blank\"'.
 (defun jf/denote-move-htmls ()
   "Equivalent to > mv ~/denote-notes/*.html ~/denote-notes/html."
   (let ((files-html (file-name-concat denote-directory "*.html"))
-	(dir-html (file-name-concat denote-directory "html/")))
+	(dir-html (file-name-concat denote-directory "docs/")))
     (files--ensure-directory dir-html)
     (shell-command (concat "mv " files-html " " dir-html))))
 
-;; NOTE Need to remove all files in html/, then process
+;; NOTE Need to remove all files in docs/, then process
 ;; since renaming files (e.g. changing tags) leads to multiple FILE.html
 
 ;; TODO graphs

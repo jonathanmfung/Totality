@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-04 Tue 18:08 -->
+<!-- 2022-10-04 Tue 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Taking Zettelkasten-style Notes</title>
+<title>Marginal Effects</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -195,25 +195,97 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Taking Zettelkasten-style Notes</h1>
-<ul class="org-ul">
-<li>Nodes should be atomic; simple and able to connect together</li>
-<li>Nodes should be (fairly) independent; able to understand without much context</li>
-<li>Don't be afraid of having too many nodes</li>
-<li>Do a first pass of material before creating a node</li>
-</ul>
-<div id="outline-container-orge9fdfd9" class="outline-2">
-<h2 id="orge9fdfd9"><span class="section-number-2">1.</span> Resources</h2>
+<h1 class="title">Marginal Effects</h1>
+<p>
+A Marginal Effect is a partial derivative of a regression equation with respect to a predictor.
+</p>
+
+<p>
+Explains the change in outcome given a unit change in predictor, holding all other predictors constant.
+</p>
+
+<p>
+Generally called a Conditional Effect when the specific predictor is categorical.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Marginal Effects Approach</th>
+<th scope="col" class="org-left">Process</th>
+<th scope="col" class="org-left"><code>maringaleffects</code></th>
+<th scope="col" class="org-left"><code>emmeans</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Average Marginal Effects (AME)</td>
+<td class="org-left">Generate Predictions for each row of original, then collapse to averages</td>
+<td class="org-left"><code>marginaleffects(model)</code></td>
+<td class="org-left">Not Supported</td>
+</tr>
+
+<tr>
+<td class="org-left">Group Average Marginal Effects (G-AME)</td>
+<td class="org-left">Generate predictions for each row of original, then collapse to grouped averages</td>
+<td class="org-left"><code>marginaleffects(model, by</code>"group")=</td>
+<td class="org-left">Not Supported</td>
+</tr>
+
+<tr>
+<td class="org-left">Marginal Effects @ user-specified values (MER)</td>
+<td class="org-left">Create a grid of specific and average values, then generate predictions</td>
+<td class="org-left"><code>marginaleffects(model, newdata=datagrid(xs=c(10,20)))</code></td>
+<td class="org-left"><code>emtrends(model, ..., at=list(xs=(10,20)))</code></td>
+</tr>
+
+<tr>
+<td class="org-left">Average Marginal Effects @ counterfactual user-specified values</td>
+<td class="org-left">Create copies of original with some columns set to specific values, then generate predictions for each row, then collapse to averages</td>
+<td class="org-left"><code>marginaleffects(model, newdata=datagrid(xs=c(10,20), grid_type</code>"counterfactual"))=</td>
+<td class="org-left">Not Supported</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="outline-container-org151209a" class="outline-2">
+<h2 id="org151209a"><span class="section-number-2">1.</span> Resources</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="https://jethrokuan.github.io/org-roam-guide/">How Jethro Kuan Takes Notes with Org-roam</a></li>
+<li><a href="https://www.andrewheiss.com/blog/2022/05/20/marginalia/">Marginalia: A guide to figuring out marginal effects</a></li>
+<li>R Packages
+<ul class="org-ul">
+<li><code>marginaleffects</code>
+<ul class="org-ul">
+<li>Uses Average Marginal Effect (AME)</li>
+<li>Can get MEM with <code>marginaleffects(newdata = "mean")</code></li>
+</ul></li>
+<li><code>emmeans</code>
+<ul class="org-ul">
+<li>Default uses Marginal Effect at the Mean (MEM), <code>emtrends()</code></li>
+<li>Also provides Estimated Marginal Means (EMM), <code>emmeans()</code></li>
+</ul></li>
+</ul></li>
+<li><a href="https://doi.org/10.1111/j.1540-5907.2012.00602.x">Behind the Curve: Clarifying the Best Approach to Calculating Predicted Probabilities and Marginal Effects from Limited Dependent Variable Models</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgbcfd3c1" class="outline-2">
-<h2 id="orgbcfd3c1"><span class="section-number-2">2.</span> Backlinks</h2>
+<div id="outline-container-orgee1cac6" class="outline-2">
+<h2 id="orgee1cac6"><span class="section-number-2">2.</span> Backlinks</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
@@ -222,8 +294,8 @@
 </div>
 
 
-<div id="outline-container-org4c83098" class="outline-2">
-<h2 id="org4c83098"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-orgbc15186" class="outline-2">
+<h2 id="orgbc15186"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

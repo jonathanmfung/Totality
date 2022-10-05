@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-04 Tue 18:08 -->
+<!-- 2022-10-04 Tue 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Likelihood Function</title>
+<title>Citations in Org-mode</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -192,55 +192,31 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Likelihood Function</h1>
+<h1 class="title">Citations in Org-mode</h1>
 <p>
-Generally, is a function of a parameter, given a sample/outcome.
+The car of <code>org-cite-export-processors</code> elements defines the back-end that org-citations take when being exported. Has values of <code>basic, csl, bibtex</code>. <code>bibtex</code> uses the biblatex package for latex, while <code>csl</code> uses the general Citation Style Language, which can also be used by latex.
 </p>
 
-<ul class="org-ul">
-<li>In the Continuous case:
-<ul class="org-ul">
-<li>\(\mathcal{L}(\theta | x) = f_\theta(x)\)</li>
-</ul></li>
-</ul>
+<p>
+CSL emits plain-text into html/latex/etc., so links and citation numbering cannot be handled. Biblatex seems more flexible in that regard.
+</p>
 
-
-<div id="outline-container-org25f747c" class="outline-2">
-<h2 id="org25f747c"><span class="section-number-2">1.</span> Resources</h2>
+<div id="outline-container-orga91ce0e" class="outline-2">
+<h2 id="orga91ce0e"><span class="section-number-2">1.</span> Resources</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>LINK</li>
+<li><a href="https://kristofferbalintona.me/posts/202206141852/">Citations in org-mode: Org-cite and Citar</a></li>
+<li><a href="https://blog.tecosaur.com/tmio/2021-07-31-citations.html">Introducing citations!</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgc771ea4" class="outline-2">
-<h2 id="orgc771ea4"><span class="section-number-2">2.</span> Backlinks</h2>
+<div id="outline-container-org306997a" class="outline-2">
+<h2 id="org306997a"><span class="section-number-2">2.</span> Backlinks</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
@@ -249,8 +225,8 @@ Generally, is a function of a parameter, given a sample/outcome.
 </div>
 
 
-<div id="outline-container-org2f99570" class="outline-2">
-<h2 id="org2f99570"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-orge6b628b" class="outline-2">
+<h2 id="orge6b628b"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>
