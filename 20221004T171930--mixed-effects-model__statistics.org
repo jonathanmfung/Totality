@@ -1,0 +1,21 @@
+#+title:      Mixed Effects Model
+#+date:       [2022-10-04 Tue 17:19]
+#+filetags:   :statistics:
+#+identifier: 20221004T171930
+
+A case of a Statistical Model that contains both [[denote:20221004T172001][Fixed Effects Model]] and [[denote:20221004T172239][Random Effects Model]].
+
+Useful for repeated measurements and when observations are clustered.
+
+Case of Repeated: Repeated measures on same subjects, but number of measurements is not the same across the subjects. Then the measurements are clustered inside subjects.
+
+Case of clustered: Looking at a school, with students in same classes/teacher. Each class would have a random slope.
+
+* Math
+\(\vec{y} = X \vec{\beta} + Z \vec{u} + \vec{\epsilon}\)
+
+- \(\vec{\beta}\) is fixed
+- \(\vec{u}, \vec{\epsilon}\) are random
+- \(X, Z\) are design matrices
+* Resources
+- [[https://www.reddit.com/r/AskStatistics/comments/upf2sm/q_when_do_we_use_mixed_effects_models/][When do pwe use mixed effects models?]]

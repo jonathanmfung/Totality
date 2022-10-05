@@ -1,0 +1,26 @@
+#+title:      Setting xdg-mime
+#+date:       [2022-10-04 Tue 17:26]
+#+filetags:   :linux:
+#+identifier: 20221004T172624
+
+#+begin_src sh
+pacman -Ql zathura-pdf-mupdf | grep .desktop
+#+end_src
+
+#+RESULTS:
+: zathura-pdf-mupdf /usr/share/applications/org.pwmt.zathura-pdf-mupdf.desktop
+
+#+begin_src sh :results none
+xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
+#+end_src
+
+#+begin_src sh
+xdg-mime query default application/pdf
+#+end_src
+
+#+RESULTS:
+: org.pwmt.zathura-pdf-mupdf.desktop
+
+
+* Resources
+- https://bbs.archlinux.org/viewtopic.php?id=248643

@@ -1,0 +1,10 @@
+#+title:      Type Checking
+#+date:       [2022-10-04 Tue 17:26]
+#+filetags:   :draft:programming-language-theory:
+#+identifier: 20221004T172605
+
+TEXT
+
+
+* Resources
+ - LINK

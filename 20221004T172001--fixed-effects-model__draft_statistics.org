@@ -1,0 +1,6 @@
+#+title:      Fixed Effects Model
+#+date:       [2022-10-04 Tue 17:20]
+#+filetags:   :draft:statistics:
+#+identifier: 20221004T172001
+
+A case of a Statistical Model where all parameters are fixed/non-random.

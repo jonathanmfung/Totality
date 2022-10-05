@@ -1,0 +1,26 @@
+#+title:      Use Cases for Synthetic Data
+#+date:       [2022-10-04 Tue 17:18]
+#+filetags:   :statistics:
+#+identifier: 20221004T171839
+
+- Boosting signals of rare/corner cases
+- Can focus on specific behaviors
+  - Test for associated breakage
+  - Understand small but important interactions
+- When working with personal information
+  - Also when data has security liabilities and is locked down
+- Need to show that process works before using real data
+  - Both with sensitive data, and with large projects that are being built
+- Model any "what if" scenarios
+
+* Importance of Simulating Data
+- In general, simulate from a model, then refit to see any differences
+- Determine if a model can recover effects reliably/unbiasedly
+  - Simulate with known parameters, then fit model to see estimation quality
+- Check power of model for various scenarios
+- Can check predictive performance of a model
+- Can check Data-Generation Processes that do not satisfy all assumptions of a model
+
+* Resource
+- [[https://www.reddit.com/r/datasets/comments/uozyib/if_you_use_synthetic_data_why_did_you_choose_to/][Why use Synthetic Data over Production Data?]]
+- [[https://www.reddit.com/r/statistics/comments/uvgesv/d_why_is_it_important_to_simulate_data/][Why is it Important to Simulate Data?]]

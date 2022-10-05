@@ -1,0 +1,7 @@
+* Totality: The State Of Being Total
+A collection of my personal notes, a braindump. Inspired by [[https://braindump.jethro.dev/][Jethro Kuan]] and [[https://en.wikipedia.org/wiki/Zettelkasten][Zettelkasten]].
+
+Build html with:
+#+begin_src sh :noeval
+./scripts/batch.sh
+#+end_src

@@ -1,0 +1,10 @@
+#+title:      Random Variable
+#+date:       [2022-10-04 Tue 17:23]
+#+filetags:   :draft:probability:
+#+identifier: 20221004T172319
+
+TEXT
+
+
+* Resources
+ - LINK

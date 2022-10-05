@@ -1,0 +1,12 @@
+#+title:      Citations in Org-mode
+#+date:       [2022-10-04 Tue 17:26]
+#+filetags:   :org-mode:
+#+identifier: 20221004T172653
+
+The car of =org-cite-export-processors= elements defines the back-end that org-citations take when being exported. Has values of =basic, csl, bibtex=. =bibtex= uses the biblatex package for latex, while =csl= uses the general Citation Style Language, which can also be used by latex.
+
+CSL emits plain-text into html/latex/etc., so links and citation numbering cannot be handled. Biblatex seems more flexible in that regard.
+
+* Resources
+- [[https://kristofferbalintona.me/posts/202206141852/][Citations in org-mode: Org-cite and Citar]]
+- [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html][Introducing citations!]]

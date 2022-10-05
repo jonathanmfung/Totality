@@ -1,0 +1,12 @@
+#+title:      Collider Bias
+#+date:       [2022-10-04 Tue 17:15]
+#+filetags:   :statistics:
+#+identifier: 20221004T171554
+
+Case of a [[denote:20221004T171624][Statistical Bias]] where a (potentially hidden) variable is affected by other variables, which are the main focus of the analysis.
+
+In [[denote:20221004T171714][Causal Inference]], stratifying on the collider variable may reveal phantom association between the other variables, this is not desirable.
+
+* Resources
+- [[https://www.reddit.com/r/statistics/comments/uovgxe/q_what_is_collider_bias/][What is Collider Bias?]]
+- [[http://www.the100.ci/2017/03/14/that-one-weird-third-variable-problem-nobody-ever-mentions-conditioning-on-a-collider/][Conditioning On a Collider]]

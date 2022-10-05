@@ -1,0 +1,13 @@
+#+title:      Black Silicon
+#+date:       [2022-10-04 Tue 17:18]
+#+filetags:   :materials-science:
+#+identifier: 20221004T171802
+
+- Elemental silicon with a surface texture of nanorods
+- Modified surface allows for light-trapping, with high absorption of wavelengths 200-1000nm
+- Nanorod-filled surface allows for mechanical rupture of bacteria
+
+* Resources
+- [[https://arxiv.org/abs/2205.02379][Mg2Si is the New Black]]
+- [[https://onlinelibrary.wiley.com/doi/10.1002/smll.201200528][Natural Bactericidal Surfaces]]
+  - [[https://iopscience.iop.org/article/10.1088/1361-6528/aa700e][Influence of nanoscale topology on bactericidal efficiency of black silicon surfaces]]

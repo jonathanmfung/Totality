@@ -1,0 +1,16 @@
+* TODO CSS Styling
+* TODO Integration of tags (Grouping)
+* TODO Render network, with links as edges
+Use DOT language with [[https://visjs.github.io/vis-network/docs/network/#importDot][vis.js]]
+
+#+begin_src dot
+digraph {
+	A [URL="https://google.com"];
+	A -> B;
+	A -> C;
+	C -> B;
+}
+#+end_src
+** TODO 2-pane View
+LHS: Index as list or network
+RHS: Content of note

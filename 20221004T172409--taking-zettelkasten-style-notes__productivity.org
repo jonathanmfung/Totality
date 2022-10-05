@@ -1,0 +1,11 @@
+#+title:      Taking Zettelkasten-style Notes
+#+date:       [2022-10-04 Tue 17:24]
+#+filetags:   :productivity:
+#+identifier: 20221004T172409
+
+- Nodes should be atomic; simple and able to connect together
+- Nodes should be (fairly) independent; able to understand without much context
+- Don't be afraid of having too many nodes
+- Do a first pass of material before creating a node
+* Resources
+- [[https://jethrokuan.github.io/org-roam-guide/][How Jethro Kuan Takes Notes with Org-roam]]

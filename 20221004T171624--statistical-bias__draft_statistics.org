@@ -1,0 +1,10 @@
+#+title:      Statistical Bias
+#+date:       [2022-10-04 Tue 17:16]
+#+filetags:   :draft:statistics:
+#+identifier: 20221004T171624
+
+TEXT
+
+
+* Resources
+ - LINK

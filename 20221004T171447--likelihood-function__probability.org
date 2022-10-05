@@ -1,0 +1,13 @@
+#+title:      Likelihood Function
+#+date:       [2022-10-04 Tue 17:14]
+#+filetags:   :probability:
+#+identifier: 20221004T171447
+
+Generally, is a function of a parameter, given a sample/outcome.
+
+- In the Continuous case:
+  - \(\mathcal{L}(\theta | x) = f_\theta(x)\)
+
+
+* Resources
+ - LINK

@@ -1,0 +1,29 @@
+#+title:      Marginal Effects
+#+date:       [2022-10-04 Tue 17:25]
+#+filetags:   :statistics:
+#+identifier: 20221004T172521
+
+A Marginal Effect is a partial derivative of a regression equation with respect to a predictor.
+
+Explains the change in outcome given a unit change in predictor, holding all other predictors constant.
+
+Generally called a Conditional Effect when the specific predictor is categorical.
+
+| Marginal Effects Approach                                       | Process                                                                                                                               | =maringaleffects=                                                                   | =emmeans=                                   |
+|-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+---------------------------------------------|
+| Average Marginal Effects (AME)                                  | Generate Predictions for each row of original, then collapse to averages                                                              | =marginaleffects(model)=                                                            | Not Supported                               |
+| Group Average Marginal Effects (G-AME)                          | Generate predictions for each row of original, then collapse to grouped averages                                                      | =marginaleffects(model, by="group")=                                                | Not Supported                               |
+| Marginal Effects @ user-specified values (MER)                  | Create a grid of specific and average values, then generate predictions                                                               | =marginaleffects(model, newdata=datagrid(xs=c(10,20)))=                             | =emtrends(model, ..., at=list(xs=(10,20)))= |
+| Average Marginal Effects @ counterfactual user-specified values | Create copies of original with some columns set to specific values, then generate predictions for each row, then collapse to averages | =marginaleffects(model, newdata=datagrid(xs=c(10,20), grid_type="counterfactual"))= | Not Supported                               |
+
+
+* Resources
+- [[https://www.andrewheiss.com/blog/2022/05/20/marginalia/][Marginalia: A guide to figuring out marginal effects]]
+- R Packages
+  - =marginaleffects=
+    - Uses Average Marginal Effect (AME)
+    - Can get MEM with =marginaleffects(newdata = "mean")=
+  - =emmeans=
+    - Default uses Marginal Effect at the Mean (MEM), =emtrends()=
+    - Also provides Estimated Marginal Means (EMM), =emmeans()=
+- [[https://doi.org/10.1111/j.1540-5907.2012.00602.x][Behind the Curve: Clarifying the Best Approach to Calculating Predicted Probabilities and Marginal Effects from Limited Dependent Variable Models]]

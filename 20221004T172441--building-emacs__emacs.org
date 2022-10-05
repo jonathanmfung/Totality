@@ -1,0 +1,43 @@
+#+title:      Building Emacs
+#+date:       [2022-10-04 Tue 17:24]
+#+filetags:   :emacs:
+#+identifier: 20221004T172441
+
+#+begin_src sh :noeval
+cd ~/emacs_build/emacs
+git remote -v # ensure remote repo is correct
+git pull # sync commits
+git status
+./autogen.sh
+./configure -C --with-pgtk --with-native-compilation --with-json
+make -j8 # number of threads
+sudo make install
+#+end_src
+
+#+begin_src elisp :results output
+(prin1 system-configuration-options)
+(print emacs-version)
+#+end_src
+
+#+RESULTS:
+: "-C --with-pgtk --with-native-compilation --with-json"
+: "29.0.50"
+
+#+begin_src elisp :results output
+(if (and (fboundp 'native-comp-available-p)
+       (native-comp-available-p))
+  (prin1 "Native compilation is available")
+(prin1 "Native complation is *not* available"))
+
+(if (functionp 'json-serialize)
+  (print "Native JSON is available")
+(print "Native JSON is *not* available"))
+#+end_src
+
+#+RESULTS:
+: "Native compilation is available"
+: "Native JSON is available"
+
+
+* Resources
+ - LINK
