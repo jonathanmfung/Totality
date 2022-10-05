@@ -14,3 +14,6 @@ digraph {
 ** TODO 2-pane View
 LHS: Index as list or network
 RHS: Content of note
+* TODO Build with GitHub Actions
+- https://github.com/purcell/setup-emacs
+- Would need to rewrite absolute paths to relative.
