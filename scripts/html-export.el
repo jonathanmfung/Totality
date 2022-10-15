@@ -75,13 +75,68 @@ Modified for use in html export, to remove hardcoded 'target=\"_blank\"'.
    (directory-files denote-directory t)))
 
 ;;; Graph Building
+
+(defun jf/denote-get-id (file)
+  "Retrieve the ID of a FILE, usually the timestamp."
+  (substring
+   (remove ?T (file-name-nondirectory file))
+   0 14))
+
+(defun jf/denote-get-title (file)
+  "Get the proper title of a FILE."
+  (substring (jf/denote-file-to-link file) 26 -2))
+
+(jf/denote-get-id "/home/jonat/denote-notes/20221005T172646--s-expression__draft.org")
+(jf/denote-get-title "/home/jonat/denote-notes/20221005T172646--s-expression__draft.org")
+
+(defun jf/denote-pair-to-dot (pair)
+  "(car PAIR) is \"/abs/file.org\"
+(con PAIR) is (\"/abs/back1.org\" \"/abs/back2\") or '(\"No backlinks to the current note\")
+"
+  (let* ((file (car pair))
+	 (file-id (jf/denote-get-id file))
+	 (file-title (jf/denote-get-title file))
+	 (file-url (file-name-with-extension (file-name-nondirectory file) "html"))
+	 (node-info (format "%s [label=\"%s\" URL=\"%s\"];\n" file-id file-title file-url))
+	 (blinks (cadr pair))
+	 (backlinks (if (equal blinks '("No backlinks to the current note"))
+			""
+		      (mapconcat (lambda (b) (format "%s -> %s;" (jf/denote-get-id b) file-id ))
+				 blinks "\n"))))
+    (concat node-info backlinks)))
+
+;; (jf/denote-pair-to-dot
+;;  '("/home/jonat/denote-notes/20221005T172646--s-expression__draft.org"
+;;    ("/home/jonat/denote-notes/20221005T172259--webassembly-wasm__programming-language-theory_virtual-machine.org"
+;;     "/home/jonat/denote-notes/20221012T170159--lisp__programming-language-theory.org")))
+;; (jf/denote-pair-to-dot
+;;  '("/home/jonat/denote-notes/20221005T172646--s-expression__draft.org"
+;;    ("No backlinks to the current note")))
+
+
+;; cannot use denote-link-find-file, because it needs to search a buffer for link
+(defun jf/denote-graph-string ()
+  (let* ((files (jf/denote-all-files))
+	 (backlinks-files (mapcar (lambda (f) (jf/denote-get-backlinks-as-links f t)) files))
+	 (zipped (cl-mapcar (lambda (f bs) (cons f (list bs))) files backlinks-files))
+	 (f-title (mapcar 'jf/denote-get-title files))
+	 (dot-info (string-join (mapcar 'jf/denote-pair-to-dot zipped) "\n"))
+	 (dot-info-full (concat "digraph {\n  ratio = 1.0\n" dot-info "\n}"))
+	 (temp-dot (make-temp-file "graph" nil ".dot" dot-info-full)))
+    ;; dot generates some header meta-data such as <?xml> and <!DOCTYPE>, so cut away with sed.
+    (shell-command-to-string (concat "fdp -Tsvg " temp-dot " | sed '1,6d'"))))
+
+
+;;; Export Generation
+
 (defun jf/denote-export-create-index (files)
   (let* ((links (mapcar #'jf/denote-file-to-link files))
 	 (path (file-name-concat denote-directory "index.html")))
     (with-temp-buffer
       (org-mode)
-      (insert "#+TITLE: Index\n")
+      (insert "#+TITLE: Totality: Index\n")
       (insert (format "#+EXPORT_FILE_NAME: %s" path))
+      (insert (format "\n#+BEGIN_EXPORT html\n %s \n#+END_EXPORT\n" (jf/denote-graph-string)))
       (insert (mapconcat (lambda (x) (format "\n- %s \n" x)) links))
       (org-html-export-to-html))))
 
@@ -95,8 +150,7 @@ Modified for use in html export, to remove hardcoded 'target=\"_blank\"'.
     (progn
       (jf/denote-export-create-index files)
       (dolist (file files)
-	(let ((backlinks (jf/denote-get-backlinks-as-links file))
-	      )
+	(let ((backlinks (jf/denote-get-backlinks-as-links file)))
 	  (with-current-buffer
 	      (find-file-noselect file)
 	    (save-excursion
@@ -118,14 +172,3 @@ Modified for use in html export, to remove hardcoded 'target=\"_blank\"'.
 
 ;; NOTE Need to remove all files in docs/, then process
 ;; since renaming files (e.g. changing tags) leads to multiple FILE.html
-
-;; TODO graphs
-;; cat foo.dot
-;; digraph {
-;; 	A [URL="https://google.com"];
-;; 	A -> B;
-;; 	A -> C;
-;; 	C -> B;
-;; }
-;; > dot -Tsvg foo.dot > foo.svg
-;; use make-temp-file, reference from org-roam-graph

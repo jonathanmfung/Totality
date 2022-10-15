@@ -1,11 +1,18 @@
 * TODO CSS Styling
 * TODO Integration of tags (Grouping)
-* TODO Render network, with links as edges
-Use DOT language with [[https://visjs.github.io/vis-network/docs/network/#importDot][vis.js]]
+* DONE Render network, with links as edges
+Use DOT language built to svg
+
+keep
+~content~ is one iframe
+
+#+begin_src sh :noeval
+dot -Tsvg foo.dot > foo.svg
+#+end_src
 
 #+begin_src dot
 digraph {
-	A [URL="https://google.com"];
+	A [URL="https://google.com", target="content"];
 	A -> B;
 	A -> C;
 	C -> B;
@@ -14,6 +21,48 @@ digraph {
 ** TODO 2-pane View
 LHS: Index as list or network
 RHS: Content of note
+
+#+begin_src html :noeval
+<object data="foo.svg" type="image/svg+xml">
+</object>
+<!-- <iframe src="foo.svg"></iframe> -->
+<iframe name="test" src="bar.html"></iframe>
+#+end_src
+
+#+begin_src js :noeval
+document.getElementsByName("test").contentWindow.location.href
+#+end_src
+
+Then find node in svg with this href, to recolor
+
+TODO Need to handle links inside of content
+- These are denote/org that get converted to html
+- would need to change ~target~ in denote-link-ol-export
+
+NOTE Or can just have graph in index
+
+TODO I think iframe security won't let me recolor the graph
+- So maybe just hardcode graph into every page, recolor with js
+
+
+#+begin_src js :noeval
+document.querySelector('.clicky').childNodes[3].childNodes[0].childNodes[1].setAttribute("fill", "blue")
+
+document.querySelector('.clicky').onclick = function clickEventHandler(event) {event.srcElement.setAttribute('background','green');}
+
+// inline svg to bypass cross-origin and crossing html-svg https://stackoverflow.com/a/3379830
+
+ellipses = document.getElementsByTagName("ellipse")
+nodes = document.querySelectorAll('.clicky')
+for (i = 0; i < nodes.length; i++) {
+    nodes[i].addEventListener('click', function(){
+	for (i = 0; i < ellipses.length; i++) {ellipses[i].setAttribute("fill", "white")}
+	this.getElementsByTagName("ellipse")[0].setAttribute("fill", "blue")})
+}
+
+#+end_src
+
+Just need to read current page, then find corresponding node, and recolor
 * TODO Build with GitHub Actions
 - https://github.com/purcell/setup-emacs
 - Would need to rewrite absolute paths to relative.
