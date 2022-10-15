@@ -38,7 +38,7 @@
   (let* ((formatter (denote-link--file-type-format file nil)))
     (denote-link--format-link file formatter)))
 
-(defun jf/denote-get-backlinks-as-links (file)
+(defun jf/denote-get-backlinks-as-links (file &optional as-file)
   "Retrieve all file paths that link top FILE."
   (when (denote-file-is-writable-and-supported-p file)
     (let ((id (denote-retrieve-filename-identifier file)))
@@ -48,7 +48,9 @@
 		 #'denote-file-is-note-p
 		 (delete file (denote--retrieve-files-in-xrefs
 			       (denote--retrieve-xrefs id))))))
-	  (mapcar 'jf/denote-file-to-link backlink-files)
+	  (if as-file
+	      backlink-files
+	    (mapcar 'jf/denote-file-to-link backlink-files))
         '("No backlinks to the current note")))))
 
 (defun denote-link-ol-export (link description format)
