@@ -1,3 +1,4 @@
+;;; Setup
 (require 'package)
 (package-initialize)
 
@@ -29,6 +30,8 @@
   (dired-mode . denote-dired-mode-in-directories))
 
 (require 'denote)
+
+;;; Utilities
 
 (defun jf/denote-file-to-link (file)
   "Convert a FILE path to link string."
@@ -69,6 +72,7 @@ Modified for use in html export, to remove hardcoded 'target=\"_blank\"'.
 		(denote-file-is-note-p f)))
    (directory-files denote-directory t)))
 
+;;; Graph Building
 (defun jf/denote-export-create-index (files)
   (let* ((links (mapcar #'jf/denote-file-to-link files))
 	 (path (file-name-concat denote-directory "index.html")))
