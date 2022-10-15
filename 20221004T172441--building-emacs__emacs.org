@@ -14,7 +14,7 @@ make -j8 # number of threads
 sudo make install
 #+end_src
 
-#+begin_src elisp :results output
+#+begin_src elisp :results output :exports both
 (prin1 system-configuration-options)
 (print emacs-version)
 #+end_src
@@ -23,7 +23,7 @@ sudo make install
 : "-C --with-pgtk --with-native-compilation --with-json"
 : "29.0.50"
 
-#+begin_src elisp :results output
+#+begin_src elisp :results output :exports both
 (if (and (fboundp 'native-comp-available-p)
        (native-comp-available-p))
   (prin1 "Native compilation is available")
