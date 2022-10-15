@@ -1,0 +1,18 @@
+#+title:      Group Theory
+#+date:       [2022-10-05 Wed 16:53]
+#+filetags:   :draft:math:
+#+identifier: 20221005T165348
+
+One of the basic mathematical objects.
+
+Defined as a set G with a binary operation, \((\cdot)\).
+
+Group Axioms \((\forall a,b,c\in G)\):
+1. Associativity := \((a\cdot b) \cdot c = a \cdot (b\cdot c)\)
+2. Identity := \(\exists e \in G: e \cdot a = a\) and \(a \cdot e = a\)
+3. Inverse := \(\exists d \in G: a \cdot d = e\) and \(d \cdot a = e\)
+   1. Where \(d\) is unique for each \(a\)
+
+
+* Resources
+ - https://en.wikipedia.org/wiki/Group_(mathematics)

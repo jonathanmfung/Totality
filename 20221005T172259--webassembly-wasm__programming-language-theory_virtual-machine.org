@@ -1,0 +1,16 @@
+#+title:      WebAssembly (WASM)
+#+date:       [2022-10-05 Wed 17:22]
+#+filetags:   :programming-language-theory:virtual-machine:
+#+identifier: 20221005T172259
+
+A binary format meant for a stack-based virtual machine.
+
+- Abbreviated WASM.
+- Sandboxed by default
+- Commonly embedded in the browser, but also popular for servers.
+- .wat is the textual format, an [[denote:20221005T172646][S-expression]]-based language.
+- Offers a compiler: [[https://github.com/WebAssembly/binaryen][binaryen]]
+
+
+* Resources
+ - LINK

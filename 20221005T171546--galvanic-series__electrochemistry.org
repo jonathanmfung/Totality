@@ -1,0 +1,10 @@
+#+title:      Galvanic Series
+#+date:       [2022-10-05 Wed 17:15]
+#+filetags:   :electrochemistry:
+#+identifier: 20221005T171546
+
+List of experimentally verified electrochemical potentials for specific materials under an electrolytic environment.
+
+
+* Resources
+ - [[https://en.wikipedia.org/wiki/Galvanic_series][Wikipedia]]

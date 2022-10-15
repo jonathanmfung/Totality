@@ -1,0 +1,13 @@
+#+title:      Lisp
+#+date:       [2022-10-12 Wed 17:01]
+#+filetags:   :programming-language-theory:
+#+identifier: 20221012T170159
+
+A family of simple languages, often characterized by:
+- [[denote:20221005T172646][S-expression]] syntax
+- Metaprogramming/Macros
+- Functional Programming
+
+
+* Resources
+ - LINK

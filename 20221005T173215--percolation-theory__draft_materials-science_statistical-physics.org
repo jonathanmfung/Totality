@@ -1,0 +1,11 @@
+#+title:      Percolation Theory
+#+date:       [2022-10-05 Wed 17:32]
+#+filetags:   :draft:materials-science:statistical-physics:
+#+identifier: 20221005T173215
+
+TEXT
+
+
+* Resources
+ - [[https://www.youtube.com/watch?v=a-767WnbaCQ][YouTube - Percolation: a Mathematical Phase Transition]]
+ - [[https://en.wikipedia.org/wiki/Percolation_theory][Wikipedia]]

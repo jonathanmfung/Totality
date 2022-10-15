@@ -1,0 +1,24 @@
+#+title:      Group Theory in Statistics
+#+date:       [2022-10-05 Wed 17:04]
+#+filetags:   :math:statistics:
+#+identifier: 20221005T170404
+
+* Topics
+- Experimental Design
+  - Factorial Design Experiments - Can generalize with finite Abelian Groups
+- Invariant Estimation
+- Estimating Covariance Matrices
+- Haar Measure priors
+- Optimal Design Theory
+  - Construct optimal block designs
+- Rank Statistic Theory (Critchlow)
+
+* References
+- Diaconis - "Group Representations in Probability and Statistics"
+- Diaconis - "Trailing the Dovetail Shuffle to Its Liar"
+- Drton, Surmfels, Sullivant - Lectures on Algebraic Statistics
+- [[https://arxiv.org/abs/1908.09326][Riemannian Geometry of Symmetric Positive Definite Matrices via Cholesky Decomposition]]
+
+
+* Resources
+ - https://www.reddit.com/r/statistics/comments/xvjmsg/q_group_theory_in_statistics/

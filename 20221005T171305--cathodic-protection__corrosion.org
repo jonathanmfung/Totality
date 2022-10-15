@@ -1,0 +1,13 @@
+#+title:      Cathodic Protection
+#+date:       [2022-10-05 Wed 17:13]
+#+filetags:   :corrosion:
+#+identifier: 20221005T171305
+
+A method to control electrochemical corrosion of a metal part. Utilizes the [[denote:20221005T171546][Galvanic Series]], where the sacrificial anode has a more negative reduction potential than the desired part. The anode will be attached by the electrolytic environment, and will have to be replaced.
+
+The system can have a bias voltage to ensure proper function.
+
+
+* Resources
+ - [[https://www.youtube.com/watch?v=qFXWjv65JWg][YouTube: Practical Engineering]]
+ - [[https://en.wikipedia.org/wiki/Cathodic_protection][Wikipedia]]
