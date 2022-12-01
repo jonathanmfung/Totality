@@ -66,3 +66,4 @@ Just need to read current page, then find corresponding node, and recolor
 * TODO Build with GitHub Actions
 - https://github.com/purcell/setup-emacs
 - Would need to rewrite absolute paths to relative.
+- to build and push in CI: https://github.com/actions/checkout#push-a-commit-using-the-built-in-token

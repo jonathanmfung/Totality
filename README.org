@@ -7,3 +7,5 @@ Build html with:
 #+begin_src sh :noeval
 ./scripts/batch.sh
 #+end_src
+
+Verify with: file:///home/jonat/denote-notes/docs/index.html
