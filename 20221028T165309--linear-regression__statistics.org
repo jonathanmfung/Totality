@@ -1,0 +1,33 @@
+#+title:      Linear Regression
+#+date:       [2022-10-28 Fri 16:53]
+#+filetags:   :statistics:
+#+identifier: 20221028T165309
+
+A general mechanism of fitting a model \(f(X,\vec{\beta}, \vec{\epsilon})\) on points \((x_i,y_i)\) such that some penalty is minimized.
+
+The model is of form: \(\vec{y} = X\vec{\beta} + \vec{\epsilon}\), where \(\vec{y}\) and \(\vec{\epsilon}\) are \(n \times 1\), \(\vec{\beta}\) is \((p + 1) \times 1\), and \(X\) is \(n \times (p + 1)\). Conceptually, \(n\) represents the number of observations and \(p\) the number of independent variables.
+
+The model form is where "Linear" comes into play. \(\vec{y}\) will always be a linear combination of the parameters and input data. AKA, \(f\) is a linear function.
+
+There are manly ways to estimate the parameters \(\vec{\beta}\):
+
+- Ordinary Least Squares
+- Maximum Likelihood Estimation
+- Ridge & Lasso Regression
+- Bayesian Linear Regression
+- Mixed Models
+- Least Angle Regression
+
+* Assumptions (OLS case)
+- Linearity :: The specified model form of the actual data must be a linear relationship.
+- Exogneity :: \(E[\epsilon \mid X] = 0\), Conditional expectation of errors is zero.
+- Linear Independent Regressors/Parameters :: The columns of \(X\) must be linearly independent. Columns correspond to the data of each parameter.
+  - \(Pr[\rank(X) = p] = 1\)
+- Homoscedasticity :: \(E[\epsilon_i^2 \mid X] = \sigma^2\), Conditional expectation of errors is constant.
+- Uncorrelated Errors ::  \(\forall i \neq j: E[\epsilon_i \epsilon_j \mid X] = 0\)
+- Normality :: \(\epsilon \mid X \sim \mathcal{N}(0, \sigma^2 I_n)\)
+
+* Resources
+ - [[https://www.reddit.com/r/statistics/comments/yfoq4y/q_what_is_linear_in_linear_regression/][r/statistics: What is Linear in Linear Regression?]]
+ - [[https://stats.stackexchange.com/questions/148638/how-to-tell-the-difference-between-linear-and-non-linear-regression-models][SE: How to tell the difference between linear and non-linear regression models?]]
+ - [[https://en.wikipedia.org/wiki/Ordinary_least_squares#Assumptions][Wikipedia: Ordinary Least Squares]]

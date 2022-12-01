@@ -1,0 +1,42 @@
+#+title:      Fixed Point Combinators
+#+date:       [2022-10-16 Sun 22:43]
+#+filetags:   :logic:
+#+identifier: 20221016T224307
+
+A specific type of [[denote:20221016T235236][combinator]] that maps a function to itself.
+
+Simplest form is the Y Combinator:
+
+\( Y = \lambda f.(\lambda x. f(x x)) (\lambda x. f(x x))\)
+
+Where if we consider application to some function, g:
+
+\begin{align*}
+Y g =&  \lambda f.(\lambda x. f(x x)) (\lambda x. f(x x)) g\\
+    =&  (\lambda x. g(x x)) (\lambda x. g(x x)) \\
+    =&  g((\lambda x. g(x x)) (\lambda x. g(x x))) \\
+    =&  g (Y g)
+\end{align*}
+
+They can be used to implement recursion in programming languages that do not natively support it. The computation system must find the fixed point that satisfies the equality. However, a recursive implementation allows for the compiler to better optimize code.
+
+A particular application is when applied to a wrapped functional, usually producing some side effects. Consider a functional ~f~ as the desired recursive computation, and a wrapper ~g~ that prints intermediate results of f but still returns ~f~'s result. Then, ~Y~ (or another FPC) can be applied to ~g~.
+
+
+
+* Haskell Implentation
+#+begin_src haskell :noeval
+fix :: ((t1 -> t2) -> t1 -> t2) -> t1 -> t2
+fix f x = f (fix f) x
+
+fact_ :: (Eq t, Num t) => (t -> t) -> t -> t
+fact_ = \fact -> \i -> if (i == 0) then 1 else (i * fact (i - 1))
+
+fact :: (Eq t2, Num t2) => t2 -> t2
+fact = fix fact_
+#+end_src
+
+* Resources
+ - [[https://www.reddit.com/r/functionalprogramming/comments/y1alrj/eli5_request_what_are_fixed_point_combinators/][Reddit: ELI5 Request: What are fixed point combinators?]]
+ - [[https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed-point_combinators_in_lambda_calculus][Wikipedia]]
+ - [[https://www.lfcs.inf.ed.ac.uk/reports/97/ECS-LFCS-97-375/][That About Wraps it Up: Using FIX to Handle Errors Without Exceptions, and Other Programming Tricks]]

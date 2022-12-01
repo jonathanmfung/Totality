@@ -1,0 +1,12 @@
+#+title:      Emacs Hidden Buffers
+#+date:       [2022-10-15 Sat 17:12]
+#+filetags:   :emacs:
+#+identifier: 20221015T171220
+
+As one of emacs' main tools is buffers, /hidden buffers/ are ways to store information. The minibuffer always displays an empty hidden buffer, and are used by org-mode source blocks for fontification.
+
+They are denoted by a preceding space in the name, such as ~<*Minibuf-1*>~.
+
+
+* Resources
+ - [[https://www.reddit.com/r/emacs/comments/y4kvsi/whats_the_minibuf0_and_buffer_echo_area_0_for/][r/emacs]]

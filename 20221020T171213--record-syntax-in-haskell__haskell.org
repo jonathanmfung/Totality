@@ -1,0 +1,58 @@
+#+title:      Record Syntax in Haskell
+#+date:       [2022-10-20 Thu 17:12]
+#+filetags:   :haskell:
+#+identifier: 20221020T171213
+
+Haskell has Algebraic Data Types, here is a sum datatype:
+#+begin_src haskell :noeval
+data Color = Hex Int Int Int -- R G B
+#+end_src
+
+This creates a definition:
+#+begin_src haskell :noeval
+Hex :: Int -> Int -> Int -> Color
+#+end_src
+
+If we want to retrieve each color channel, we would have to write:
+#+begin_src haskell :noeval
+getRed   (Color r _ _) = r
+getGreen (Color _ g _) = g
+getBlue  (Color _ _ b) = b
+#+end_src
+
+Record Syntax is a method of sugaring these accessors:
+#+begin_src haskell :noeval
+data Color = Color {r :: Int, g :: Int, b :: Int}
+Color :: Int -> Int -> Int -> Color
+r :: Color -> Int
+
+r (Color 1 2 3) == 1
+#+end_src
+
+And since functions are also types:
+#+begin_src haskell :noeval
+data Foo = Foo {
+  alpha :: Int -> String,
+  beta :: String -> Char
+  }
+
+Foo :: (Int -> String) -> (String -> Char) -> Foo
+alpha (Foo show head) :: Int -> String -- == show
+#+end_src
+
+An example utilizing this is in a parser:
+#+begin_src haskell :noeval
+newtype Parser a = Parser {
+  runParser :: String -> Maybe (String, a)
+  }
+
+data Expr = Plus Int Int
+exprVal :: Parser Expr
+exprVal = undefined -- implements
+
+runParser exprVal :: String -> Maybe (String, ExprVal)
+runParser exprVal "1 + 2" :: Maybe (String, ExprVal)
+#+end_src
+
+* Resources
+ - [[https://youtu.be/N9RUqGYuGfw?t=917][Parser Example]]

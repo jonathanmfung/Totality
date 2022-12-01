@@ -1,0 +1,13 @@
+#+title:      Combinatory Logic / Calculus
+#+date:       [2022-10-16 Sun 23:52]
+#+filetags:   :computation:logic:draft:
+#+identifier: 20221016T235236
+
+A mathematical logic system where there are no free variables. The main mechanism is composition of functions.
+
+Commonly described through [[denote:20221016T235859][Lambda Calculus]].
+
+TODO SKI Calculus example
+
+* Resources
+ - LINK

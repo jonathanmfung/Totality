@@ -1,0 +1,14 @@
+#+title:      Hypothesis Test
+#+date:       [2022-11-20 Sun 16:58]
+#+filetags:   :draft:frequentist:statistics:
+#+identifier: 20221120T165854
+
+A class of methods in [[denote:20221120T165940][Frequentist Statitistics]] to understand if a set of data supports falls under a specific hypothesis.
+
+Hypotheses are either rejected or failed to be rejected.
+
+Ex: \(H_0: \mu = 0, H_a: \mu \neq 0 \)
+
+
+* Resources
+ - LINK

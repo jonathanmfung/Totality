@@ -1,0 +1,10 @@
+#+title:      Frequentist Statitistics
+#+date:       [2022-11-20 Sun 16:59]
+#+filetags:   :draft:statistics:
+#+identifier: 20221120T165940
+
+A side of statistics characterized by long-range asymptotic behavior.
+
+
+* Resources
+ - LINK

@@ -1,0 +1,15 @@
+#+title:      Bottom Type
+#+date:       [2022-10-26 Wed 19:29]
+#+filetags:   :logic:type-theory:
+#+identifier: 20221026T192959
+
+The bottom type of a type system, \(\bot\), is defined such that it is a subtype of all other types in the system.
+
+Examples:
+- Haskell: ~undefined, error~
+- Common Lisp: ~NIL~
+- Julia: ~Union{}~
+
+
+* Resources
+ - [[https://en.wikipedia.org/wiki/Bottom_type][Wikipedia]]

@@ -1,0 +1,12 @@
+#+title:      Normality Tests
+#+date:       [2022-11-20 Sun 16:57]
+#+filetags:   :statistics:
+#+identifier: 20221120T165728
+
+A specific type of [[denote:20221120T165854][Hypothesis Test]] to test if a dataset is from a Normal data generation process
+
+Generally not recommenced to ever compute.
+
+
+* Resources
+ - LINK

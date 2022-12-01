@@ -1,0 +1,19 @@
+#+title:      Objective Function
+#+date:       [2022-11-16 Wed 19:59]
+#+filetags:   :decision-theory:machine-learning:optimization:
+#+identifier: 20221116T195956
+
+A mathematical function that maps parameters or data onto a real number to quantify achieving a /goal/.
+
+Examples:
+- Square Loss: \(\mathcal{L} = (f(x_i\mid \theta) - y_i)^2\)
+- Mean Squared Error: \(\mathcal{L} = \frac{1}{N} \sum_{i=1}^N(f(x_i\mid \theta) - y_i)^2\)
+- Akaike Information Criterion: \(\mathcal{L} = 2k - 2\log{L}\)
+  - \(L\) is likelihood, \(k\) is number of estimated parameters
+
+"Loss Function" and "Cost Function" are other terms that fall under this category. These two are generally reserved in situations where the objective function is aimed to be minimized. Maximization tends to use "Reward Function" or "Utility Function".
+
+* Resources
+ - [[https://stats.stackexchange.com/questions/179026/objective-function-cost-function-loss-function-are-they-the-same-thing][SE: Objective function, cost function, loss function: are they the same thing?]]
+ - [[https://stats.stackexchange.com/questions/73221/what-is-a-loss-function-in-decision-theory][SE: What is a loss function in decision theory?]]
+ - [[https://stats.stackexchange.com/questions/228503/is-akaike-information-criterion-a-kind-of-loss-function][SE: Is Akaike Information Criterion a kind of loss function?]]

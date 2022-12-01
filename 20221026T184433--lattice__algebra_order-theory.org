@@ -1,0 +1,24 @@
+#+title:      Lattice
+#+date:       [2022-10-26 Wed 18:44]
+#+filetags:   :algebra:order-theory:
+#+identifier: 20221026T184433
+
+* Order Theory Definition
+A paritally ordered set that is both a join- and meet-semilattice
+
+A join-semilattice is a partially ordered set that has a binary relation /join/ (least upper bound, aka supremum) where \(\forall x,y \in S: \exists \sup(\{x,y\})\). Likewise for a meet-semilattice and greatest lower bound, aka infinum.
+
+A join-semilattice is /bounded/ if it has a least element, defined as the join of the empty set. Likewise for a meet-semilattice and a greatest element. This element can be thought of as a sort of [[denote:20221026T192959][bottom]].
+
+* Algebra Definition
+An algebraic structure of set \(L\) with two binary, commutative, and associative operations that satisfy the following for all \(a,b \in L\):
+
+\(a \lor (a \land b) = a\)
+
+\(a \land (a \lor b) = a\)
+
+The two types of semilattices are then defined as \((L, \lor)\) and \((L, \land)\), for join- and meet-.
+
+* Resources
+ - [[https://en.wikipedia.org/wiki/Lattice_(order)][Wikipedia: Lattice]]
+ - [[https://en.wikipedia.org/wiki/Semilattice][Wikipedia: Semilattice]]

@@ -1,0 +1,38 @@
+#+title:      Network Manager
+#+date:       [2022-11-19 Sat 17:41]
+#+filetags:   :linux:
+#+identifier: 20221119T174125
+
+* Troubleshooting
+** Connection activation failed
+[[https://unix.stackexchange.com/a/519620][Solution Source]]
+
+If:
+#+begin_src
+~ > nmcli device wifi connect Jellyfish password peanutbutter1
+Error: Connection activation failed: (7) Secrets were required, but not provided.
+#+end_src
+
+Then edit:
+#+begin_src
+~ > cat /etc/NetworkManager/NetworkManager.conf
+# Configuration file for NetworkManager.
+# See "man 5 NetworkManager.conf" for details.
+
+[device]
+wifi.scan-rand-mac-address=no⏎
+#+end_src
+
+And restart:
+#+begin_src
+~ > sudo systemctl restart NetworkManager
+#+end_src
+
+Proceed to connect as usual:
+#+begin_src
+nmcli device wifi connect <SSID> password <PASSWORD>
+#+end_src
+
+
+* Resources
+ - LINK

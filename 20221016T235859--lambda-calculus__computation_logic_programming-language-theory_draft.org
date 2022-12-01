@@ -1,0 +1,20 @@
+#+title:      Lambda Calculus
+#+date:       [2022-10-16 Sun 23:58]
+#+filetags:   :computation:logic:programming-language-theory:draft:
+#+identifier: 20221016T235859
+
+A logic/computation system defined by the following rules:
+
+1. Every variable is a λ-term.
+2. If \(M\) and \(N\) are λ-terms, then so is \((MN)\).
+3. If \(M\) is a λ-term and \(x\) is a variable, then \((\lambda x[M])\) is a λ-term.
+
+Rule 2 is called /Application/, Rule 3 is called /Abstraction/.
+
+TODO Free Variable, Bound Variable
+TODO Substitution
+TODO Beta-Conversion
+TODO Eta-Reduction
+
+* Resources
+ - [[~/texts/programming/The Lambda Calculus (Stanford Encyclopedia of Philosophy).pdf]]

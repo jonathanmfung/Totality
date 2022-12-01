@@ -1,0 +1,76 @@
+#+title:      Propagators
+#+date:       [2022-10-26 Wed 15:01]
+#+filetags:   :computation:
+#+identifier: 20221026T150120
+
+A model of computation characterized by a network of cells that contain values, and propagators that read and write the contents of cells.
+
+The following is a description of \(x + y = z\). Filling in any two cells and running the propagation will fill in the last remaining one.
+
+#+begin_src artist
+       -----	      +-------+
+      /     \	 /--->|   -   |
+     /       \---     |	      |<-\
+     | 	 7   |--     /+-------+	  -----\    -----
+     \       /  \---/ 		        ---/ 	 \
+      \     /<-   /\->+-------+		  /       \
+       -----  -\-/    |   +   |---------->|  15   |
+       -----  -/\     |       |		  \       /
+      /     \</   \ />+-------+		 --\ 	 /
+     /       \	/--\ 		     ---/   -----
+     |   8   |--    \ +-------+	 ---/
+     \       /--      |   -   |</
+      \     /	\---  |       |
+       -----	    \>+-------+
+#+end_src
+
+It is naive to hold the raw values in cells. Instead they should be wrapped in some manner. This creates a system that will always steady-state, either with correct ~Knowns~ or all ~Contradiction~.
+#+begin_src haskell :noeval
+data Perhaps a = Unknown       -- Initial state
+               | Known a       -- After a computation
+               | Contradiction -- When a propagator produces a value different from the current Known value
+#+end_src
+
+Consider a network shaped like a triangle, holding boolean values in each cell and having ~not~ as each propagator. After supplying some initial value, propagating 3 times will overwrite the initial value. Using cells with ~Perhaps Boolean~ values, will instead steady-state in all ~Contradiction~ values.
+
+On another note, we also may want to have history in these cells, they should accumulate partial information. Then, cells are [[denote:20221026T184433][bounded join-semilattices]]. Any propagation function will then be monotonic, and always increase (or stay the same) information in the cell/system.
+
+Using the previous datatype and example gives the following structure.
+#+begin_example
+       Contradiction
+          /   \
+Known True     Known False
+          \   /
+         Unknown
+#+end_example
+
+** Truth-Maintenance Systems (Sussman)
+If we annotate cells with what presumptions their value is contingent on, we can create a system that can trace back computations and their presumptions. This is useful when encountering contradictions.
+
+We can then inspect values dependent on specified assumptions.
+
+** Parallel Processing
+Though parallel execution of propagators will create race conditions in the network, the monotonicity property will override and result in a final steady-state solution.
+
+** Applications
+- Search
+- Unification
+- Integer Linear Programming
+- SAT soliving
+- Interval Arithmetic
+
+* Similar Ideas
+- Lindsey Kuper's work on LVars
+  - [[https://legacy.cs.indiana.edu/%7Errnewton/papers/effectzoo-draft.pdf][Associated Application-based Paper]]
+- Functional Reactive Programming
+- Dataflow Programming
+  - [[https://enso.org/language][Enso Lang]]
+- Incremental Programming
+  - [[http://adapton.org/][Adapton Lang]]
+
+* Resources
+ - [[https://www.reddit.com/r/ProgrammingLanguages/comments/ycejhy/are_ideas_presented_here_implemented_anywhere/][r/ProgrammingLanguages]]
+ - [[https://www.youtube.com/watch?v=HB5TrK7A4pI&t=1219s][YouTube: We Really Don't Know How to Compute! - Gerald Sussman (2011)]]
+ - [[https://www.youtube.com/watch?v=nY1BCv3xn24][YouTube: An Intuition for Propagators - George Wilson (2019)]]
+   - [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwid4tz67_76AhXDKEQIHRnyD50QFnoECAoQAQ&url=https%3A%2F%2Fqfpl.io%2Fshare%2Ftalks%2Fpropagators%2Fslides.pdf&usg=AOvVaw23iQLYCgG2TNm3AbLhutqF][Associated Slides]]
+ - [[https://groups.csail.mit.edu/mac/users/gjs/propagators/][Revised Report on the Propagator Model - Alexey Radul, Gerald Sussman]]
