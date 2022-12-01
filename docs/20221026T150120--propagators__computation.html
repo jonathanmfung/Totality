@@ -6,7 +6,7 @@
 <!-- 2022-11-30 Wed 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Percolation Theory</title>
+<title>Propagators</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -192,29 +192,161 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Percolation Theory</h1>
+<h1 class="title">Propagators</h1>
 <p>
-TEXT
+A model of computation characterized by a network of cells that contain values, and propagators that read and write the contents of cells.
 </p>
 
+<p>
+The following is a description of \(x + y = z\). Filling in any two cells and running the propagation will fill in the last remaining one.
+</p>
 
-<div id="outline-container-org489ec36" class="outline-2">
-<h2 id="org489ec36"><span class="section-number-2">1.</span> Resources</h2>
+<div class="org-src-container">
+<pre class="src src-artist">  -----	      +-------+
+ /     \	 /---&gt;|   -   |
+/       \---     |	      |&lt;-\
+| 	 7   |--     /+-------+	  -----\    -----
+\       /  \---/ 		        ---/ 	 \
+ \     /&lt;-   /\-&gt;+-------+		  /       \
+  -----  -\-/    |   +   |----------&gt;|  15   |
+  -----  -/\     |       |		  \       /
+ /     \&lt;/   \ /&gt;+-------+		 --\ 	 /
+/       \	/--\ 		     ---/   -----
+|   8   |--    \ +-------+	 ---/
+\       /--      |   -   |&lt;/
+ \     /	\---  |       |
+  -----	    \&gt;+-------+
+</pre>
+</div>
+
+<p>
+It is naive to hold the raw values in cells. Instead they should be wrapped in some manner. This creates a system that will always steady-state, either with correct <code>Knowns</code> or all <code>Contradiction</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">data Perhaps a = Unknown       -- Initial state
+	       | Known a       -- After a computation
+	       | Contradiction -- When a propagator produces a value different from the current Known value
+</pre>
+</div>
+
+<p>
+Consider a network shaped like a triangle, holding boolean values in each cell and having <code>not</code> as each propagator. After supplying some initial value, propagating 3 times will overwrite the initial value. Using cells with <code>Perhaps Boolean</code> values, will instead steady-state in all <code>Contradiction</code> values.
+</p>
+
+<p>
+On another note, we also may want to have history in these cells, they should accumulate partial information. Then, cells are <a href="20221026T184433--lattice__algebra_order-theory.html">bounded join-semilattices</a>. Any propagation function will then be monotonic, and always increase (or stay the same) information in the cell/system.
+</p>
+
+<p>
+Using the previous datatype and example gives the following structure.
+</p>
+<pre class="example" id="org8f63af2">
+       Contradiction
+          /   \
+Known True     Known False
+          \   /
+         Unknown
+</pre>
+
+<div id="outline-container-org07e551a" class="outline-3">
+<h3 id="org07e551a"><span class="section-number-3">0.1.</span> Truth-Maintenance Systems (Sussman)</h3>
+<div class="outline-text-3" id="text-0-1">
+<p>
+If we annotate cells with what presumptions their value is contingent on, we can create a system that can trace back computations and their presumptions. This is useful when encountering contradictions.
+</p>
+
+<p>
+We can then inspect values dependent on specified assumptions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org73b686d" class="outline-3">
+<h3 id="org73b686d"><span class="section-number-3">0.2.</span> Parallel Processing</h3>
+<div class="outline-text-3" id="text-0-2">
+<p>
+Though parallel execution of propagators will create race conditions in the network, the monotonicity property will override and result in a final steady-state solution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb9e3880" class="outline-3">
+<h3 id="orgb9e3880"><span class="section-number-3">0.3.</span> Applications</h3>
+<div class="outline-text-3" id="text-0-3">
+<ul class="org-ul">
+<li>Search</li>
+<li>Unification</li>
+<li>Integer Linear Programming</li>
+<li>SAT soliving</li>
+<li>Interval Arithmetic</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org17cf6e3" class="outline-2">
+<h2 id="org17cf6e3"><span class="section-number-2">1.</span> Similar Ideas</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=a-767WnbaCQ">YouTube - Percolation: a Mathematical Phase Transition</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Percolation_theory">Wikipedia</a></li>
+<li>Lindsey Kuper's work on LVars
+<ul class="org-ul">
+<li><a href="https://legacy.cs.indiana.edu/%7Errnewton/papers/effectzoo-draft.pdf">Associated Application-based Paper</a></li>
+</ul></li>
+<li>Functional Reactive Programming</li>
+<li>Dataflow Programming
+<ul class="org-ul">
+<li><a href="https://enso.org/language">Enso Lang</a></li>
+</ul></li>
+<li>Incremental Programming
+<ul class="org-ul">
+<li><a href="http://adapton.org/">Adapton Lang</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f2636f" class="outline-2">
+<h2 id="org2f2636f"><span class="section-number-2">2.</span> Resources</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/ProgrammingLanguages/comments/ycejhy/are_ideas_presented_here_implemented_anywhere/">r/ProgrammingLanguages</a></li>
+<li><a href="https://www.youtube.com/watch?v=HB5TrK7A4pI&amp;t=1219s">YouTube: We Really Don't Know How to Compute! - Gerald Sussman (2011)</a></li>
+<li><a href="https://www.youtube.com/watch?v=nY1BCv3xn24">YouTube: An Intuition for Propagators - George Wilson (2019)</a>
+<ul class="org-ul">
+<li><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwid4tz67_76AhXDKEQIHRnyD50QFnoECAoQAQ&amp;url=https%3A%2F%2Fqfpl.io%2Fshare%2Ftalks%2Fpropagators%2Fslides.pdf&amp;usg=AOvVaw23iQLYCgG2TNm3AbLhutqF">Associated Slides</a></li>
+</ul></li>
+<li><a href="https://groups.csail.mit.edu/mac/users/gjs/propagators/">Revised Report on the Propagator Model - Alexey Radul, Gerald Sussman</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgf01e842" class="outline-2">
-<h2 id="orgf01e842"><span class="section-number-2">2.</span> Backlinks</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org54ff93c" class="outline-2">
+<h2 id="org54ff93c"><span class="section-number-2">3.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
 </ul>
@@ -222,8 +354,8 @@ TEXT
 </div>
 
 
-<div id="outline-container-org77c546c" class="outline-2">
-<h2 id="org77c546c"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org0268586" class="outline-2">
+<h2 id="org0268586"><span class="section-number-2">4.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

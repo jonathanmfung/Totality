@@ -6,7 +6,7 @@
 <!-- 2022-11-30 Wed 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Percolation Theory</title>
+<title>Record Syntax in Haskell</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -195,25 +195,88 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Percolation Theory</h1>
+<h1 class="title">Record Syntax in Haskell</h1>
 <p>
-TEXT
+Haskell has Algebraic Data Types, here is a sum datatype:
 </p>
+<div class="org-src-container">
+<pre class="src src-haskell">data Color = Hex Int Int Int -- R G B
+</pre>
+</div>
 
+<p>
+This creates a definition:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">Hex :: Int -&gt; Int -&gt; Int -&gt; Color
+</pre>
+</div>
 
-<div id="outline-container-org489ec36" class="outline-2">
-<h2 id="org489ec36"><span class="section-number-2">1.</span> Resources</h2>
+<p>
+If we want to retrieve each color channel, we would have to write:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">getRed   (Color r _ _) = r
+getGreen (Color _ g _) = g
+getBlue  (Color _ _ b) = b
+</pre>
+</div>
+
+<p>
+Record Syntax is a method of sugaring these accessors:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">data Color = Color {r :: Int, g :: Int, b :: Int}
+Color :: Int -&gt; Int -&gt; Int -&gt; Color
+r :: Color -&gt; Int
+
+r (Color 1 2 3) == 1
+</pre>
+</div>
+
+<p>
+And since functions are also types:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">data Foo = Foo {
+  alpha :: Int -&gt; String,
+  beta :: String -&gt; Char
+  }
+
+Foo :: (Int -&gt; String) -&gt; (String -&gt; Char) -&gt; Foo
+alpha (Foo show head) :: Int -&gt; String -- == show
+</pre>
+</div>
+
+<p>
+An example utilizing this is in a parser:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">newtype Parser a = Parser {
+  runParser :: String -&gt; Maybe (String, a)
+  }
+
+data Expr = Plus Int Int
+exprVal :: Parser Expr
+exprVal = undefined -- implements
+
+runParser exprVal :: String -&gt; Maybe (String, ExprVal)
+runParser exprVal "1 + 2" :: Maybe (String, ExprVal)
+</pre>
+</div>
+
+<div id="outline-container-orgbaaeb9d" class="outline-2">
+<h2 id="orgbaaeb9d"><span class="section-number-2">1.</span> Resources</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=a-767WnbaCQ">YouTube - Percolation: a Mathematical Phase Transition</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Percolation_theory">Wikipedia</a></li>
+<li><a href="https://youtu.be/N9RUqGYuGfw?t=917">Parser Example</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgf01e842" class="outline-2">
-<h2 id="orgf01e842"><span class="section-number-2">2.</span> Backlinks</h2>
+<div id="outline-container-orge9c4ab1" class="outline-2">
+<h2 id="orge9c4ab1"><span class="section-number-2">2.</span> Backlinks</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
@@ -222,8 +285,8 @@ TEXT
 </div>
 
 
-<div id="outline-container-org77c546c" class="outline-2">
-<h2 id="org77c546c"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org64ed145" class="outline-2">
+<h2 id="org64ed145"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

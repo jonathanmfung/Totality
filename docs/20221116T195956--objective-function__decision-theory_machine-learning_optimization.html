@@ -6,7 +6,7 @@
 <!-- 2022-11-30 Wed 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Percolation Theory</title>
+<title>Objective Function</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -192,28 +192,65 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Percolation Theory</h1>
+<h1 class="title">Objective Function</h1>
 <p>
-TEXT
+A mathematical function that maps parameters or data onto a real number to quantify achieving a <i>goal</i>.
 </p>
 
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>Square Loss: \(\mathcal{L} = (f(x_i\mid \theta) - y_i)^2\)</li>
+<li>Mean Squared Error: \(\mathcal{L} = \frac{1}{N} \sum_{i=1}^N(f(x_i\mid \theta) - y_i)^2\)</li>
+<li>Akaike Information Criterion: \(\mathcal{L} = 2k - 2\log{L}\)
+<ul class="org-ul">
+<li>\(L\) is likelihood, \(k\) is number of estimated parameters</li>
+</ul></li>
+</ul>
 
-<div id="outline-container-org489ec36" class="outline-2">
-<h2 id="org489ec36"><span class="section-number-2">1.</span> Resources</h2>
+<p>
+"Loss Function" and "Cost Function" are other terms that fall under this category. These two are generally reserved in situations where the objective function is aimed to be minimized. Maximization tends to use "Reward Function" or "Utility Function".
+</p>
+
+<div id="outline-container-org1107f82" class="outline-2">
+<h2 id="org1107f82"><span class="section-number-2">1.</span> Resources</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=a-767WnbaCQ">YouTube - Percolation: a Mathematical Phase Transition</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Percolation_theory">Wikipedia</a></li>
+<li><a href="https://stats.stackexchange.com/questions/179026/objective-function-cost-function-loss-function-are-they-the-same-thing">SE: Objective function, cost function, loss function: are they the same thing?</a></li>
+<li><a href="https://stats.stackexchange.com/questions/73221/what-is-a-loss-function-in-decision-theory">SE: What is a loss function in decision theory?</a></li>
+<li><a href="https://stats.stackexchange.com/questions/228503/is-akaike-information-criterion-a-kind-of-loss-function">SE: Is Akaike Information Criterion a kind of loss function?</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgf01e842" class="outline-2">
-<h2 id="orgf01e842"><span class="section-number-2">2.</span> Backlinks</h2>
+<div id="outline-container-org42eff1e" class="outline-2">
+<h2 id="org42eff1e"><span class="section-number-2">2.</span> Backlinks</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
@@ -222,8 +259,8 @@ TEXT
 </div>
 
 
-<div id="outline-container-org77c546c" class="outline-2">
-<h2 id="org77c546c"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org7fd470b" class="outline-2">
+<h2 id="org7fd470b"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

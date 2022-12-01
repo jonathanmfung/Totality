@@ -6,7 +6,7 @@
 <!-- 2022-11-30 Wed 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Percolation Theory</title>
+<title>Network Manager</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -195,26 +195,70 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Percolation Theory</h1>
+<h1 class="title">Network Manager</h1>
+
+<div id="outline-container-orgc019883" class="outline-2">
+<h2 id="orgc019883"><span class="section-number-2">1.</span> Troubleshooting</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org8549061" class="outline-3">
+<h3 id="org8549061"><span class="section-number-3">1.1.</span> Connection activation failed</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-TEXT
+<a href="https://unix.stackexchange.com/a/519620">Solution Source</a>
 </p>
 
+<p>
+If:
+</p>
+<pre class="example">
+~ &gt; nmcli device wifi connect Jellyfish password peanutbutter1
+Error: Connection activation failed: (7) Secrets were required, but not provided.
+</pre>
 
-<div id="outline-container-org489ec36" class="outline-2">
-<h2 id="org489ec36"><span class="section-number-2">1.</span> Resources</h2>
-<div class="outline-text-2" id="text-1">
+<p>
+Then edit:
+</p>
+<pre class="example">
+~ &gt; cat /etc/NetworkManager/NetworkManager.conf
+# Configuration file for NetworkManager.
+# See "man 5 NetworkManager.conf" for details.
+
+[device]
+wifi.scan-rand-mac-address=no⏎
+</pre>
+
+<p>
+And restart:
+</p>
+<pre class="example">
+~ &gt; sudo systemctl restart NetworkManager
+</pre>
+
+<p>
+Proceed to connect as usual:
+</p>
+<pre class="example">
+nmcli device wifi connect &lt;SSID&gt; password &lt;PASSWORD&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1bac3cc" class="outline-2">
+<h2 id="org1bac3cc"><span class="section-number-2">2.</span> Resources</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=a-767WnbaCQ">YouTube - Percolation: a Mathematical Phase Transition</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Percolation_theory">Wikipedia</a></li>
+<li>LINK</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgf01e842" class="outline-2">
-<h2 id="orgf01e842"><span class="section-number-2">2.</span> Backlinks</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgcf718a0" class="outline-2">
+<h2 id="orgcf718a0"><span class="section-number-2">3.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
 </ul>
@@ -222,8 +266,8 @@ TEXT
 </div>
 
 
-<div id="outline-container-org77c546c" class="outline-2">
-<h2 id="org77c546c"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-org23a3323" class="outline-2">
+<h2 id="org23a3323"><span class="section-number-2">4.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>

@@ -6,7 +6,7 @@
 <!-- 2022-11-30 Wed 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Percolation Theory</title>
+<title>Linear Regression</title>
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -192,29 +192,88 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Percolation Theory</h1>
+<h1 class="title">Linear Regression</h1>
 <p>
-TEXT
+A general mechanism of fitting a model \(f(X,\vec{\beta}, \vec{\epsilon})\) on points \((x_i,y_i)\) such that some penalty is minimized.
 </p>
 
+<p>
+The model is of form: \(\vec{y} = X\vec{\beta} + \vec{\epsilon}\), where \(\vec{y}\) and \(\vec{\epsilon}\) are \(n \times 1\), \(\vec{\beta}\) is \((p + 1) \times 1\), and \(X\) is \(n \times (p + 1)\). Conceptually, \(n\) represents the number of observations and \(p\) the number of independent variables.
+</p>
 
-<div id="outline-container-org489ec36" class="outline-2">
-<h2 id="org489ec36"><span class="section-number-2">1.</span> Resources</h2>
-<div class="outline-text-2" id="text-1">
+<p>
+The model form is where "Linear" comes into play. \(\vec{y}\) will always be a linear combination of the parameters and input data. AKA, \(f\) is a linear function.
+</p>
+
+<p>
+There are manly ways to estimate the parameters \(\vec{\beta}\):
+</p>
+
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=a-767WnbaCQ">YouTube - Percolation: a Mathematical Phase Transition</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Percolation_theory">Wikipedia</a></li>
+<li>Ordinary Least Squares</li>
+<li>Maximum Likelihood Estimation</li>
+<li>Ridge &amp; Lasso Regression</li>
+<li>Bayesian Linear Regression</li>
+<li>Mixed Models</li>
+<li>Least Angle Regression</li>
+</ul>
+
+<div id="outline-container-orga980a86" class="outline-2">
+<h2 id="orga980a86"><span class="section-number-2">1.</span> Assumptions (OLS case)</h2>
+<div class="outline-text-2" id="text-1">
+<dl class="org-dl">
+<dt>Linearity</dt><dd>The specified model form of the actual data must be a linear relationship.</dd>
+<dt>Exogneity</dt><dd>\(E[\epsilon \mid X] = 0\), Conditional expectation of errors is zero.</dd>
+<dt>Linear Independent Regressors/Parameters</dt><dd>The columns of \(X\) must be linearly independent. Columns correspond to the data of each parameter.
+<ul class="org-ul">
+<li>\(Pr[\rank(X) = p] = 1\)</li>
+</ul></dd>
+<dt>Homoscedasticity</dt><dd>\(E[\epsilon_i^2 \mid X] = \sigma^2\), Conditional expectation of errors is constant.</dd>
+<dt>Uncorrelated Errors</dt><dd>\(\forall i \neq j: E[\epsilon_i \epsilon_j \mid X] = 0\)</dd>
+<dt>Normality</dt><dd>\(\epsilon \mid X \sim \mathcal{N}(0, \sigma^2 I_n)\)</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org6665e36" class="outline-2">
+<h2 id="org6665e36"><span class="section-number-2">2.</span> Resources</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/statistics/comments/yfoq4y/q_what_is_linear_in_linear_regression/">r/statistics: What is Linear in Linear Regression?</a></li>
+<li><a href="https://stats.stackexchange.com/questions/148638/how-to-tell-the-difference-between-linear-and-non-linear-regression-models">SE: How to tell the difference between linear and non-linear regression models?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ordinary_least_squares#Assumptions">Wikipedia: Ordinary Least Squares</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgf01e842" class="outline-2">
-<h2 id="orgf01e842"><span class="section-number-2">2.</span> Backlinks</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org2494c7d" class="outline-2">
+<h2 id="org2494c7d"><span class="section-number-2">3.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>No backlinks to the current note</li>
 </ul>
@@ -222,8 +281,8 @@ TEXT
 </div>
 
 
-<div id="outline-container-org77c546c" class="outline-2">
-<h2 id="org77c546c"><span class="section-number-2">3.</span> <a href="./index.html">Index</a></h2>
+<div id="outline-container-orgef11a3c" class="outline-2">
+<h2 id="orgef11a3c"><span class="section-number-2">4.</span> <a href="./index.html">Index</a></h2>
 </div>
 </div>
 </body>
